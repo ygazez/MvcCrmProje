@@ -1,0 +1,73 @@
+﻿@model IEnumerable<CRMPROJEDB.Models.Tbl_UrunKategori>
+
+@{
+    ViewBag.Title = "KategoriUrun";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori Ürünleri</h2>
+
+<table class="table urunkategori">
+
+    @foreach (var item in Model)
+    {
+        <tr class="kategori" kategoriid="@item.UrunKategoriID.ToString()">
+            <td>
+              @Html.DisplayFor(modelItem => item.KategoriAdi)
+            </td>
+        </tr>
+
+        foreach (var product in item.Tbl_Urun)
+        {
+            <tr class="urun" kategoriid="@item.UrunKategoriID.ToString()">
+                <td>
+                    <a href="/Tbl_Urun/Edit/@product.UrunID.ToString()">@product.Adi</a>
+                </td>
+            </tr>
+
+        }
+    }
+
+</table>
+
+<style type="text/css">
+    .kategori{
+
+    }
+        .kategori td {
+            background-color: whitesmoke;
+            font-weight:bold;
+            cursor:grab;
+        }
+
+    .urun {
+        display: none;
+    }
+
+        .urun td {
+            padding-left: 20px;
+        }
+
+        .aktif td{
+            background-color:red !important;
+            color:white;
+        }
+</style>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.kategori').click(function () {
+            var kategoriId = $(this).attr('kategoriid');
+
+            $('.kategori').removeClass('aktif');
+            $(this).addClass('aktif');
+
+            $('.urun').hide();
+            $('.urun[kategoriid=' + kategoriId + ']').show();
+        });
+
+    });
+
+</script>

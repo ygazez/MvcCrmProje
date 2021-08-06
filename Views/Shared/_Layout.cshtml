@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="/uruns/Index">Sepet(@CRMPROJEDB.Library.Helper.SepetUrunSayisi().ToString())</a></li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    @if (System.Web.HttpContext.Current.Session["Tbl_Kullanıcı"] != null)
+                    {
+                        <li>@Html.ActionLink("Ürün Kategori", "Index", "Tbl_UrunKategori")</li>
+                        <li>@Html.ActionLink("Ürünler", "Index", "Tbl_Urun")</li>
+                        <li>@Html.ActionLink("Firma", "Index", "Tbl_Firma")</li>
+                        <li>@Html.ActionLink("Kullanıcı", "Index", "Tbl_Kullanici")</li>
+                        <li>@Html.ActionLink("Satış", "Index", "Tbl_Satis")</li>
+                        <li>@Html.ActionLink("Satış Urun Detay", "Index", "Tbl_SatisUrunDetay")</li>
+                        <li>@Html.ActionLink("LogOut", "Logout", "Login")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @if (System.Web.HttpContext.Current.Session["Tbl_Kullanıcı"] != null)
+        {
+            var kul = (CRMPROJEDB.Models.Tbl_Kullanici)System.Web.HttpContext.Current.Session["Tbl_Kullanıcı"];
+            <h1>Hoş geldin @kul.Adi @kul.Soyadi</h1>
+        }
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿@model CRMPROJEDB.Models.Tbl_Firma
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_Firma</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VergiDairesi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VergiDairesi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VergiNumarasi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VergiNumarasi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Kullanici.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Kullanici.Adi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FirmaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

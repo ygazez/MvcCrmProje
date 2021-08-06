@@ -1,0 +1,118 @@
+﻿@model IEnumerable<CRMPROJEDB.Models.Tbl_Kullanici>
+
+@{
+    ViewBag.Title = "kullanici ve firmalari";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>kullanici ve firmalari</h2>
+
+<table class="table kullanici">
+
+    @foreach (var item in Model)
+    {
+        <tr class="kullanici" kullanicid="@item.KullaniciID.ToString()">
+            <td>
+                @Html.DisplayFor(modelItem => item.Adi)
+            </td>
+        </tr>
+
+        foreach (var product in item.Tbl_Firma)
+        {
+            <tr class="firma" kullanicid="@item.KullaniciID.ToString()" firmaid="@product.FirmaID.ToString()">
+                <td>
+                    <a href="/Tbl_Firma/Edit/@product.FirmaID.ToString()">@product.Adi</a>
+                </td>
+            </tr>
+
+            foreach (var satis in product.Tbl_Satis)
+            {
+                <tr class="satis" firmaid="@satis.Firma.ToString()">
+                    <td>
+                        <a href="/Tbl_SatisUrunDetay/Index?SatisID=@satis.SatisID.ToString()">@satis.KdvDahilFiyat</a>
+                    </td>
+                </tr>
+
+            }
+        }
+    }
+
+</table>
+
+<style type="text/css">
+    .kullanici {
+    }
+
+        .kullanici td {
+            background-color: whitesmoke;
+            font-weight: bold;
+            cursor: grab;
+        }
+
+    .firma {
+        display: none;
+    }
+
+        .firma td {
+            padding-left: 20px;
+        }
+
+    .aktif td {
+        background-color: red !important;
+        color: white;
+    }
+
+    .satis {
+        display: none;
+    }
+
+        .satis td {
+            padding-left: 20px;
+        }
+
+    .aktif td {
+        background-color: red !important;
+        color: white;
+    }
+
+    .aktif2 td {
+        background-color: yellow !important;
+        color: white;
+    }
+</style>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.kullanici').click(function () {
+            var kullaniciId = $(this).attr('kullanicid');
+
+            if (kullaniciId == null)
+                return;
+
+            $('.kullanici').removeClass('aktif');
+            $(this).addClass('aktif');
+
+            $('.firma').hide();
+            $('.firma[kullanicid=' + kullaniciId + ']').show();
+
+
+
+            $('.firma').click(function () {
+                var firmaid = $(this).attr('firmaid');
+                if (firmaid == null)
+                    return;
+                $('.firma').removeClass('aktif2');
+                $(this).addClass('aktif2');
+
+                $('.satis').hide();
+                $('.satis[firmaid=' + firmaid + ']').show();
+
+                return false;
+            });
+
+        });
+    });
+
+</script>

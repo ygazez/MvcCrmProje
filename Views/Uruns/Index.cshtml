@@ -1,0 +1,119 @@
+﻿@model CRMPROJEDB.Library.Sepet
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sepet</h2>
+<p><a href="/Tbl_Firma/Edit/@Model.FirmaID.ToString()">@Model.FirmaAdi</a></p>
+
+
+<table class="table">
+    <tr>
+
+        <th>
+            Ürün ID
+        </th>
+        <th>
+            Adı
+        </th>
+        <th>
+            Adet
+        </th>
+        <th>
+            Stok Adet
+        </th>
+        <th>
+            Birim Fiyat
+        </th>
+        <th>
+            Toplam
+        </th>
+
+        <th></th>
+    </tr>
+
+    @{ 
+        CRMPROJEDB.Models.crmprojeEntities db = new CRMPROJEDB.Models.crmprojeEntities();
+    }
+
+    @foreach (var item in Model.Urunler)
+    {
+
+        var adet = db.Tbl_Urun.Where(n => n.UrunID == item.UrunID).Select(n => n.Urunmiktari).FirstOrDefault();
+
+<tr>
+    <td>
+        <input type="hidden" value="@item.UrunID" class="urunid" />
+        @item.UrunID
+    </td>
+    <td>
+        @item.Adi
+    </td>
+    <td>
+        <input type="number" value="@item.Adet" class="adet" />
+    </td>
+    <td>
+        @adet
+    </td>
+    <td>
+        @item.Fiyat
+    </td>
+    <td>
+
+        @item.ToplamFiyat
+    </td>
+    <td>
+        @Html.ActionLink("Delete", "Delete", new { id = item.UrunID })
+    </td>
+</tr>
+    }
+
+</table>
+
+<div class="col-md-12" style="text-align:right">
+    <p>Sepet Toplamı: @Model.SepetToplami</p>
+
+    @Html.ActionLink("Siparisver", "Siparisver");
+</div>
+
+
+
+
+<script type="text/javascript">
+    $('.adet').change(function () {
+        var adet = $(this).val();
+        var urunid = $('.urunid', $(this).parents('tr')).val();
+
+        var obj = new Object();
+        obj.id = urunid;
+        obj.adet = adet;
+
+        $.ajax({
+            type: "POST",
+            url: "/uruns/MiktarDegis/0",
+            data: JSON.stringify(obj),
+            contentType: "application/json; charset=utf-8",
+            success: function (response) {
+                if (response != null) {
+                    if (response == "OK") {
+                        location.reload();
+                    }
+                    else
+                        alert(response);
+                } else {
+                    alert("Something went wrong");
+                }
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+
+    });
+
+</script>

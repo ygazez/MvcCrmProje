@@ -1,0 +1,122 @@
+﻿@model IEnumerable<CRMPROJEDB.Models.Tbl_Satis>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Firma
+        </th>
+        <th>
+            Satışcı
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kdv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KdvDahilFiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KdvsizFiyat)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="satis">
+            <td>
+                <b style="color:red;">@Html.DisplayFor(modelItem => item.Tbl_Firma.Adi)</b>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tbl_Kullanici.Adi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kdv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KdvDahilFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KdvsizFiyat)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SatisID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SatisID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SatisID })
+            </td>
+
+        </tr>
+        <tr>
+            <td colspan="7">
+                <table class="uruntable">
+                    <tr>
+                        <th>Ürün Adı</th>
+                        <th>Adet</th>
+                        <th>KDV</th>
+                        <th>Kdvsiz</th>
+                        <th>Kdvli</th>
+                        <th>Birim Fiyat</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var urun in item.Tbl_SatisUrunDetay)
+                    {
+                        <tr class="urun">
+                            <td>
+                                @Html.DisplayFor(modelItem => urun.Tbl_Urun.Adi)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => urun.Adet)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => urun.Kdv)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => urun.KdvsizFiyat)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => urun.KdvDahilFiyat)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => urun.BirimFiyati)
+                            </td>
+                            <td></td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+    }
+
+</table>
+<style type="text/css">
+    .satis td {
+        background-color: yellow;
+    }
+
+    .urun td {
+        border: solid 1px gray;
+        padding: 3px;
+    }
+
+    .uruntable {
+        padding-left: 20px;
+        width: 100%;
+    }
+</style>
+
+ 

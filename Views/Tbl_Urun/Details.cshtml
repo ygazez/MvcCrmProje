@@ -1,0 +1,67 @@
+﻿@model CRMPROJEDB.Models.Tbl_Urun
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_Urun</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fotograf)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fotograf)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Urunmiktari)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Urunmiktari)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_UrunKategori.KategoriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_UrunKategori.KategoriAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UrunID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

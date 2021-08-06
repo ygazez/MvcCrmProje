@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CRMPROJEDB.Models.Tbl_UrunKategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @Html.ActionLink("Kategori Ürünleri", "KategoriUrun")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KategoriAdi)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KategoriAdi)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UrunKategoriID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UrunKategoriID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UrunKategoriID })
+            </td>
+        </tr>
+    }
+
+</table>

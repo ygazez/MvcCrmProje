@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2bfcc34c5c77420baf4523ecdb3712a2" Name="Diagram1">
+        <EntityTypeShape EntityType="crmprojeModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="crmprojeModel.Tbl_Firma" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="crmprojeModel.Tbl_Kullanici" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="crmprojeModel.Tbl_Satis" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="crmprojeModel.Tbl_SatisUrunDetay" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="crmprojeModel.Tbl_Urun" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="crmprojeModel.Tbl_UrunKategori" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <AssociationConnector Association="crmprojeModel.FK_Tbl_Firma_Tbl_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="crmprojeModel.FK_Tbl_Satis_Tbl_Firma" ManuallyRouted="false" />
+        <AssociationConnector Association="crmprojeModel.FK_Tbl_Satis_Tbl_Kullanici" ManuallyRouted="false" />
+        <AssociationConnector Association="crmprojeModel.FK_Tbl_SatisUrunDetay_Tbl_Satis" ManuallyRouted="false" />
+        <AssociationConnector Association="crmprojeModel.FK_Tbl_SatisUrunDetay_Tbl_Urun" ManuallyRouted="false" />
+        <AssociationConnector Association="crmprojeModel.FK_Tbl_Urun_Tbl_UrunKategori" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

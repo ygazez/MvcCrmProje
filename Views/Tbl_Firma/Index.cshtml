@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CRMPROJEDB.Models.Tbl_Firma>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VergiDairesi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VergiNumarasi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Kullanici.Adi)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Adi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VergiDairesi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VergiNumarasi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tbl_Kullanici.Adi)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.FirmaID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.FirmaID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.FirmaID })
+                | <a href="/Tbl_Urun/Index?FirmaID=@item.FirmaID.ToString()">Satış Yap</a>
+            </td>
+        </tr>
+    }
+
+</table>

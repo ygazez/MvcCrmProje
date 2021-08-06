@@ -1,0 +1,71 @@
+﻿@model IEnumerable<CRMPROJEDB.Models.Tbl_SatisUrunDetay>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Urun.Adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kdv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KdvsizFiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KdvDahilFiyat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirimFiyati)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tbl_Satis.SatisID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tbl_Urun.Adi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kdv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KdvsizFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KdvDahilFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirimFiyati)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tbl_Satis.SatisID)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SatisUrunDetayID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SatisUrunDetayID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SatisUrunDetayID })
+            </td>
+        </tr>
+    }
+
+</table>

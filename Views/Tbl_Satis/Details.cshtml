@@ -1,0 +1,67 @@
+﻿@model CRMPROJEDB.Models.Tbl_Satis
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tbl_Satis</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kdv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kdv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KdvDahilFiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KdvDahilFiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KdvsizFiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KdvsizFiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Firma.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Firma.Adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tbl_Kullanici.Adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tbl_Kullanici.Adi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SatisID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
